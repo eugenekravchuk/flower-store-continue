@@ -14,28 +14,44 @@ import com.example.demo.payment.CreditCardPaymentStrategy;
 import com.example.demo.payment.PayPalPaymentStrategy;
 
 public class DeliveryAndPaymentTests {
+
+    final static int PRICE = 10;
+	final static int SEPALLENGTH = 10;
+
     @Test
-    void creatingFirstOrder(){
+    void creatingFirstOrder() {
         Order myOrder = new Order(
-						List.of((new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE)),
-								new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE),
-								new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE)),
-						new DHLDeliveryStrategy(), 
-						new PayPalPaymentStrategy());
-        assertEquals(myOrder.getDelivery().getDeliveryNotification(), "Delivery with DHL");
-        assertEquals(myOrder.getPayment().paymentMessage(), "Payed with PayPal");        
+    List.of((
+            new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, 
+                FlowerType.ROSE)),
+            new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, 
+                FlowerType.ROSE),
+            new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, 
+                FlowerType.ROSE)),
+            new DHLDeliveryStrategy(), 
+            new PayPalPaymentStrategy());
+        assertEquals(myOrder.getDelivery().getDeliveryNotification(),
+         "Delivery with DHL");
+        assertEquals(myOrder.getPayment().paymentMessage(),
+         "Payed with PayPal");        
     }
 
     @Test
-    void creatingSecondOrder(){
+    void creatingSecondOrder() {
         Order myOrder = new Order(
-                            List.of((new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE)),
-                                    new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE),
-                                    new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE)),
-                            new PostDeliveryStrategy(), 
-                            new CreditCardPaymentStrategy());   
-        assertEquals(myOrder.getDelivery().getDeliveryNotification(), "Delivery with simple Post");
-        assertEquals(myOrder.getPayment().paymentMessage(), "Payed with card");     
+            List.of((
+                    new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, 
+                        FlowerType.ROSE)),
+                    new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, 
+                        FlowerType.ROSE),
+                    new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE,
+                        FlowerType.ROSE)),
+                    new PostDeliveryStrategy(), 
+                    new CreditCardPaymentStrategy());  
+        assertEquals(myOrder.getDelivery().getDeliveryNotification(), 
+        "Delivery with simple Post");
+        assertEquals(myOrder.getPayment().paymentMessage(),
+         "Payed with card");     
     }
 
 }
