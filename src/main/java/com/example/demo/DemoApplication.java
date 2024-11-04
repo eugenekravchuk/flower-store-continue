@@ -30,20 +30,20 @@ public class DemoApplication {
         return List.of(
             new Order(
                 List.of(new Flower(SEPALLENGTH, FlowerColor.BLUE, 
+                                   PRICE, FlowerType.TULIP),
+                        new Flower(SEPALLENGTH, FlowerColor.RED, 
                                    PRICE, FlowerType.ROSE),
-                        new Flower(SEPALLENGTH, FlowerColor.BLUE, 
-                                   PRICE, FlowerType.ROSE),
-                        new Flower(SEPALLENGTH, FlowerColor.BLUE, 
+                        new Flower(SEPALLENGTH, FlowerColor.GREEN, 
                                    PRICE, FlowerType.ROSE)),
                 new DHLDeliveryStrategy(), 
                 new PayPalPaymentStrategy()),
             new Order(
                 List.of(new Flower(SEPALLENGTH, FlowerColor.BLUE, 
                                    PRICE, FlowerType.ROSE),
-                        new Flower(SEPALLENGTH, FlowerColor.BLUE, 
-                                   PRICE, FlowerType.ROSE),
-                        new Flower(SEPALLENGTH, FlowerColor.BLUE, 
-                                   PRICE, FlowerType.ROSE)),
+                        new Flower(SEPALLENGTH, FlowerColor.GREEN, 
+                                   PRICE, FlowerType.TULIP),
+                        new Flower(SEPALLENGTH, FlowerColor.RED, 
+                                   PRICE, FlowerType.CHAMOMILE)),
                 new PostDeliveryStrategy(), 
                 new CreditCardPaymentStrategy())
         );
