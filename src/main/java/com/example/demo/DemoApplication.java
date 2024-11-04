@@ -18,28 +18,34 @@ import com.example.demo.payment.PayPalPaymentStrategy;
 @SpringBootApplication
 @RestController
 public class DemoApplication {
-	final static int PRICE = 10;
-	final static int SEPALLENGTH = 10;
+    static final int PRICE = 10;
+    static final int SEPALLENGTH = 10;
 
-	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
 
-	@GetMapping("/order")
-	public static List<Order> listFlowers() {
-		return List.of(
-				new Order(
-			List.of((new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, FlowerType.ROSE)),
-					new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, FlowerType.ROSE),
-					new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, FlowerType.ROSE)),
-			new DHLDeliveryStrategy(), 
-			new PayPalPaymentStrategy()),
-	new Order(
-			List.of((new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, FlowerType.ROSE)),
-					new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, FlowerType.ROSE),
-					new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, FlowerType.ROSE)),
-			new PostDeliveryStrategy(), 
-			new CreditCardPaymentStrategy()));
-
-	}
+    @GetMapping("/order")
+    public static List<Order> listFlowers() {
+        return List.of(
+            new Order(
+                List.of(new Flower(SEPALLENGTH, FlowerColor.BLUE, 
+                                   PRICE, FlowerType.ROSE),
+                        new Flower(SEPALLENGTH, FlowerColor.BLUE, 
+                                   PRICE, FlowerType.ROSE),
+                        new Flower(SEPALLENGTH, FlowerColor.BLUE, 
+                                   PRICE, FlowerType.ROSE)),
+                new DHLDeliveryStrategy(), 
+                new PayPalPaymentStrategy()),
+            new Order(
+                List.of(new Flower(SEPALLENGTH, FlowerColor.BLUE, 
+                                   PRICE, FlowerType.ROSE),
+                        new Flower(SEPALLENGTH, FlowerColor.BLUE, 
+                                   PRICE, FlowerType.ROSE),
+                        new Flower(SEPALLENGTH, FlowerColor.BLUE, 
+                                   PRICE, FlowerType.ROSE)),
+                new PostDeliveryStrategy(), 
+                new CreditCardPaymentStrategy())
+        );
+    }
 }
