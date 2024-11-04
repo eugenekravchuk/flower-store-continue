@@ -21,15 +21,14 @@ public class DeliveryAndPaymentTests {
     @Test
     void creatingFirstOrder() {
         Order myOrder = new Order(
-        List.of((
-            new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, 
-                FlowerType.ROSE)),
-            new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, 
-                FlowerType.ROSE),
-            new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, 
-                FlowerType.ROSE)),
-            new DHLDeliveryStrategy(), 
-            new PayPalPaymentStrategy());
+            List.of(new Flower(SEPALLENGTH, FlowerColor.BLUE, 
+            PRICE, FlowerType.TULIP),
+ new Flower(SEPALLENGTH, FlowerColor.RED, 
+            PRICE, FlowerType.ROSE),
+ new Flower(SEPALLENGTH, FlowerColor.GREEN, 
+            PRICE, FlowerType.ROSE)),
+new DHLDeliveryStrategy(), 
+new PayPalPaymentStrategy());
         Assertions.assertEquals(myOrder.getDelivery()
         .getDeliveryNotification(), "Delivery with DHL");
         Assertions.assertEquals(myOrder.getPayment()
@@ -39,15 +38,14 @@ public class DeliveryAndPaymentTests {
     @Test
     void creatingSecondOrder() {
         Order myOrder = new Order(
-        List.of((
-            new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, 
-                FlowerType.ROSE)),
-            new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, 
-                FlowerType.ROSE),
-            new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE,
-                FlowerType.ROSE)),
-            new PostDeliveryStrategy(), 
-            new CreditCardPaymentStrategy());  
+            List.of(new Flower(SEPALLENGTH, FlowerColor.BLUE, 
+            PRICE, FlowerType.ROSE),
+ new Flower(SEPALLENGTH, FlowerColor.GREEN, 
+            PRICE, FlowerType.TULIP),
+ new Flower(SEPALLENGTH, FlowerColor.RED, 
+            PRICE, FlowerType.CHAMOMILE)),
+new PostDeliveryStrategy(), 
+new CreditCardPaymentStrategy());  
         Assertions.assertEquals(myOrder.getDelivery()
         .getDeliveryNotification(), 
         "Delivery with simple Post");
