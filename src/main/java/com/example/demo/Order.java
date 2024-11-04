@@ -17,23 +17,9 @@ public class Order {
     private Delivery delivery;
     private PaymentStrategy payment;
 
-    public void setItems(List<Item> newItems) {
-        items = newItems;
-    }
-
     public Order(List<Item> items, Delivery delivery, PaymentStrategy payment) {
         this.items = items;
         this.delivery = delivery;
         this.payment = payment;
     }
-
-    public PaymentStrategy getPayment() {
-        return this.payment;
-    }
-
-    public Delivery getDelivery() {
-        return this.delivery;
-    }
-
-
 }

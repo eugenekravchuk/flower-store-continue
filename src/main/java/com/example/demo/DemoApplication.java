@@ -18,6 +18,8 @@ import com.example.demo.payment.PayPalPaymentStrategy;
 @SpringBootApplication
 @RestController
 public class DemoApplication {
+	final static int PRICE = 10;
+	final static int SEPALLENGTH = 10;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
@@ -27,17 +29,17 @@ public class DemoApplication {
 	public static List<Order> listFlowers() {
 		return List.of(
 				new Order(
-						List.of((new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE)),
-								new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE),
-								new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE)),
-						new DHLDeliveryStrategy(), 
-						new PayPalPaymentStrategy()),
-				new Order(
-						List.of((new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE)),
-								new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE),
-								new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE)),
-						new PostDeliveryStrategy(), 
-						new CreditCardPaymentStrategy()));
+			List.of((new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, FlowerType.ROSE)),
+					new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, FlowerType.ROSE),
+					new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, FlowerType.ROSE)),
+			new DHLDeliveryStrategy(), 
+			new PayPalPaymentStrategy()),
+	new Order(
+			List.of((new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, FlowerType.ROSE)),
+					new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, FlowerType.ROSE),
+					new Flower(SEPALLENGTH, FlowerColor.BLUE, PRICE, FlowerType.ROSE)),
+			new PostDeliveryStrategy(), 
+			new CreditCardPaymentStrategy()));
 
 	}
 }

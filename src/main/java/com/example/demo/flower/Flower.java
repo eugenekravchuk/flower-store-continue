@@ -1,10 +1,11 @@
 package com.example.demo.flower;
 
-import lombok.Getter;
-import lombok.Setter;
 import com.example.demo.Item;
+
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @Setter
@@ -29,7 +30,8 @@ public class Flower extends Item {
     }
 
     public boolean match(Flower f) {
-        return this.price == f.getPrice() && this.flowerType.equals(f.getFlowerType())
+        return this.price == f.getPrice() 
+        && this.flowerType.equals(f.getFlowerType())
                 && this.getSepalLength() == f.getSepalLength();
     }
 }
