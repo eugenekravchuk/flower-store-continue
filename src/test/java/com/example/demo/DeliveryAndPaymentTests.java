@@ -48,7 +48,8 @@ public class DeliveryAndPaymentTests {
                 FlowerType.ROSE)),
             new PostDeliveryStrategy(), 
             new CreditCardPaymentStrategy());  
-        Assertions.assertEquals(myOrder.getDelivery().getDeliveryNotification(), 
+        Assertions.assertEquals(myOrder.getDelivery()
+        .getDeliveryNotification(), 
         "Delivery with simple Post");
         Assertions.assertEquals(myOrder.getPayment().paymentMessage(),
          "Payed with card");     
